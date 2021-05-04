@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -21,15 +22,15 @@ public class Anuncio implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
-    private Long id;
+    private Integer id;
 
     private String nomeAnuncio;
 
     private String nomeCliente;
 
-    private LocalDate dataInicio;
+    private String dataInicio;
 
-    private LocalDate dataFinal;
+    private String dataFinal;
 
     private BigDecimal investimento;
 
