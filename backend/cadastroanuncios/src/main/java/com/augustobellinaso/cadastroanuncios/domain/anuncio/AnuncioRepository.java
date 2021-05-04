@@ -1,5 +1,6 @@
 package com.augustobellinaso.cadastroanuncios.domain.anuncio;
 
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -10,8 +11,12 @@ import java.util.List;
 @Repository
 public interface AnuncioRepository extends JpaRepository<Anuncio, Integer> {
 
+    @Query("SELECT a FROM Anuncio a WHERE a.nomeCliente = ?1")
     public List<Anuncio> findByNomeCliente(String nomeCliente);
 
-   // @Query("SELECT a FROM Anuncio a WHERE a.d BETWEEN ?1 AND ?2")
-    //public List<Anuncio> findByDateInterval(LocalDate dataInicial, LocalDate dataFinal);
+    @Query("SELECT a FROM Anuncio a WHERE a.dataInicio >= ?1")
+   public List<Anuncio> findByDataInicio(LocalDate dataInicial);
+
+    @Query("SELECT a FROM Anuncio a WHERE a.dataFinal <= ?1")
+    public List<Anuncio> findByDataFinal(LocalDate dataFinal);
 }

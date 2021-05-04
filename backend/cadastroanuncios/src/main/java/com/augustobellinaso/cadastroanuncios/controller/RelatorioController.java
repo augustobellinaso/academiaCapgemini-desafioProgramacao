@@ -25,8 +25,7 @@ public class RelatorioController {
     public String relatorios(@ModelAttribute("anuncioRelatorioFilter") AnuncioRelatorioFilter filter,
                              Model model){
 
-        List<Anuncio> anuncios = anuncioRepository.findAll();
-        //List<Anuncio> anuncios = relatorioService.listAnuncios(filter);
+        List<Anuncio> anuncios = relatorioService.listAnuncios(filter);
         model.addAttribute("anuncios", anuncios);
 
         model.addAttribute("filter", filter);

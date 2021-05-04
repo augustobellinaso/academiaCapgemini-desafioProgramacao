@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.Period;
 
 @Entity
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -45,12 +45,17 @@ public class Anuncio implements Serializable {
 
     @NotNull(message = "O valor do investimento deve ser preenchido")
     @Column
-    private BigDecimal investimento;
+    private BigDecimal investimentoDia;
 
+
+    public int totalInvestido() {
+        int dias = Period.between(dataInicio, dataFinal).getDays();
+        return dias * investimentoDia.intValue();
+    }
     //Métodos da classe
     public int qtdeMaximaVisualizacoes() {
         int visualizacoes = 0;
-        int visualizacoesOriginais = visualizacoesAnuncioOriginal(investimento.intValue());
+        int visualizacoesOriginais = visualizacoesAnuncioOriginal(totalInvestido());
         visualizacoes += visualizacoesOriginais;
 
         int cliques = 0;

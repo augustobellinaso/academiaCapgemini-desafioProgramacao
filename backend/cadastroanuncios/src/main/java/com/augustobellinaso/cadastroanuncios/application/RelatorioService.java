@@ -3,7 +3,6 @@ package com.augustobellinaso.cadastroanuncios.application;
 import com.augustobellinaso.cadastroanuncios.domain.anuncio.Anuncio;
 import com.augustobellinaso.cadastroanuncios.domain.anuncio.AnuncioRelatorioFilter;
 import com.augustobellinaso.cadastroanuncios.domain.anuncio.AnuncioRepository;
-import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,19 +19,18 @@ public class RelatorioService {
 
         String nome = filter.getNomeCliente();
 
-        if (!(nome == "")) {
+        if (nome != null && !nome.equals("")) {
             return anuncioRepository.findByNomeCliente(nome);
         }
 
         LocalDate dataInicial = filter.getDataInicio();
-        LocalDate dataFinal = filter.getDataFinal();
-
-        if (dataInicial == null) {
-            return List.of();
+        if (dataInicial != null) {
+            return anuncioRepository.findByDataInicio(dataInicial);
         }
 
-        if (dataFinal == null) {
-            dataFinal = LocalDate.now();
+        LocalDate dataFinal = filter.getDataFinal();
+        if (dataFinal != null){
+            return anuncioRepository.findByDataFinal(dataFinal);
         }
 
         return anuncioRepository.findAll();

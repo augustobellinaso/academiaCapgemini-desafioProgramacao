@@ -16,63 +16,75 @@
 <div class="container py-3">
     <h1 class="text-primary">Relatório de anúncios</h1>
 
-
     <div class="text-center">
         <form method="get" th:object="${filter}" th:action="@{/relatorios}">
             <h4 class="text-secondary">Filtrar relatórios</h4>
             <div class="mb-3">
-                <label class="form-label">Cliente</label> <br />
+                <label class="form-label">Cliente</label> <br/>
                 <input type="text" class="form-control-sm" th:field="*{nomeCliente}">
             </div>
 
             <div class="mb-3">
-                <label class="form-label">Data de início</label> <br />
+                <label class="form-label">Data de início</label> <br/>
                 <input type="date" class="form-control-sm" th:field="*{dataInicio}">
             </div>
 
             <div class="mb-3">
-                <label  class="form-label">Data de início</label> <br />
+                <label class="form-label">Data de término</label> <br/>
                 <input type="date" class="form-control-sm" th:field="*{dataFinal}">
             </div>
 
-            <input type="submit" value="Buscar" class="btn btn-primary" />
+            <input type="submit" value="Buscar" class="btn btn-primary"/>
         </form>
     </div>
     <br/>
 
 
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th scope="col">Anúncio</th>
-            <th scope="col">Cliente</th>
-            <th scope="col">Valor Investido por dia</th>
-            <th scope="col">Visualizações por dia</th>
-            <th scope="col">Cliques por dia</th>
-            <th scope="col">Compartilhamentos por dia</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="anuncio : ${anuncios}">
-            <td><span th:text="${anuncio.nomeAnuncio}"></span></td>
-            <td><span th:text="${anuncio.nomeCliente}"></span></td>
-            <td><span th:text="${anuncio.investimento}"></span></td>
-            <td><span th:text="${anuncio.qtdeMaximaVisualizacoes()}"></span></td>
-            <td><span th:text="${anuncio.cliquesTotais()}"></span></td>
-            <td><span th:text="${anuncio.compartilhamentosTotais()}"></span></td>
-        </tr>
+    <div th:if="${anuncios.size() > 0}">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Anúncio</th>
+                <th scope="col">Cliente</th>
+                <th scope="col">Data de início</th>
+                <th scope="col">Data de término</th>
+                <th scope="col">Total investido</th>
+                <th scope="col">Total de Visualizações</th>
+                <th scope="col">Total de Cliques</th>
+                <th scope="col">Total de Compartilhamento</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="anuncio : ${anuncios}">
+                <td><span th:text="${anuncio.nomeAnuncio}"></span></td>
+                <td><span th:text="${anuncio.nomeCliente}"></span></td>
+                <td><span th:text="${#temporals.format(anuncio.dataInicio, 'dd MMM yyyy')}"></span></td>
+                <td><span th:text="${#temporals.format(anuncio.dataFinal, 'dd MMM yyyy')}"></span></td>
+                <td><span th:text="${#numbers.formatCurrency(anuncio.totalInvestido())}"></span></td>
+                <td><span th:text="${anuncio.qtdeMaximaVisualizacoes()}"></span></td>
+                <td><span th:text="${anuncio.cliquesTotais()}"></span></td>
+                <td><span th:text="${anuncio.compartilhamentosTotais()}"></span></td>
+            </tr>
 
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
+    <br/>
+
+    <div th:if="${anuncios.size() == 0}" class="alert alert-warning">
+        <span> Nenhum anúncio encontrado </span>
+    </div>
+
     <input type="button" class="btn btn-secondary" value="Voltar" th:onclick="'location.href=\'' + @{/index} + '\';'">
 </div>
 
 <footer class="bg-light text-center text-lg-start">
     <br/>
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        <a class="text-dark" href="https://www.linkedin.com/in/augustobellinaso/" target="_blank">Augusto Loose Bellinaso</a>
+        <a class="text-dark" href="https://www.linkedin.com/in/augustobellinaso/" target="_blank">Augusto Loose
+            Bellinaso</a>
     </div>
 </footer>
-    
+
 </body>
 </html>
