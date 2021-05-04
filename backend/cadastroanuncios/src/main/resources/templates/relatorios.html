@@ -14,7 +14,60 @@
 <body>
 
 <div class="container py-3">
-    <h1>Relatório de anúncios</h1>
+    <h1 class="text-primary">Relatório de anúncios</h1>
+
+
+    <div class="text-center">
+        <form method="get">
+
+            <h4 class="text-secondary">Filtrar relatórios</h4>
+
+            <div class="mb-3">
+                <label for="clienteFiltro" class="form-label">Cliente</label> <br />
+                <input type="text" class="form-control-sm" id="clienteFiltro">
+            </div>
+
+            <div class="mb-3">
+                <label for="dataInicioFiltro" class="form-label">Data de início</label> <br />
+                <input type="date" class="form-control-sm" id="dataInicioFiltro">
+            </div>
+
+            <div class="mb-3">
+                <label for="dataInicioFiltro" class="form-label">Data de início</label> <br />
+                <input type="date" class="form-control-sm" id="dataInicioFiltro">
+            </div>
+
+            <input type="submit" value="Buscar" class="btn btn-primary" />
+        </form>
+    </div>
+    <br/>
+
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Anúncio</th>
+            <th scope="col">Cliente</th>
+            <th scope="col">Valor Investido</th>
+            <th scope="col">Visualizações</th>
+            <th scope="col">Visualizações</th>
+            <th scope="col">Cliques</th>
+            <th scope="col">Compartilhamentos</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+            <td>@mdo</td>
+            <td>@mdo</td>
+            <td>@mdo</td>
+        </tr>
+
+        </tbody>
+    </table>
 </div>
 
 <footer class="bg-light text-center text-lg-start">
