@@ -60,7 +60,7 @@
 
             <div class="mb-3">
                 <label class="form-label">Investimento por dia</label>
-                <input type="text" class="form-control" th:field="*{investimento}" onkeydown="return isNumberKey(event);"/>
+                <input type="text" class="form-control" th:field="*{investimento}" onkeypress="return (event.charCode == 46 || event.charCode == 44) || (event.charCode >= 48 && event.charCode <= 57);"/>
             </div>
             <div class="alert alert-danger container" role="alert" th:if="${#fields.hasErrors('investimento')}">
                 <span th:errors="*{investimento}"></span>
