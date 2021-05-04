@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.Valid;
+
 @Controller
 @RequestMapping(path = "/public")
 public class AnuncioController {
@@ -25,7 +27,7 @@ public class AnuncioController {
     }
 
     @PostMapping(path = "/cadastro/save")
-    public String cadastrarAnuncio(@ModelAttribute("anuncio") Anuncio anuncio) {
+    public String cadastrarAnuncio(@ModelAttribute("anuncio") @Valid Anuncio anuncio) {
         anuncioService.saveAnuncio(anuncio);
         return "anuncio-cadastro";
     }
