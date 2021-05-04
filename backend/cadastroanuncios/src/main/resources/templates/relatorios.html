@@ -18,23 +18,21 @@
 
 
     <div class="text-center">
-        <form method="get">
-
+        <form method="get" th:object="${filter}" th:action="@{/relatorios}">
             <h4 class="text-secondary">Filtrar relatórios</h4>
-
             <div class="mb-3">
-                <label for="clienteFiltro" class="form-label">Cliente</label> <br />
-                <input type="text" class="form-control-sm" id="clienteFiltro">
+                <label class="form-label">Cliente</label> <br />
+                <input type="text" class="form-control-sm" th:field="*{nomeCliente}">
             </div>
 
             <div class="mb-3">
-                <label for="dataInicioFiltro" class="form-label">Data de início</label> <br />
-                <input type="date" class="form-control-sm" id="dataInicioFiltro">
+                <label class="form-label">Data de início</label> <br />
+                <input type="date" class="form-control-sm" th:field="*{dataInicio}">
             </div>
 
             <div class="mb-3">
-                <label for="dataInicioFiltro" class="form-label">Data de início</label> <br />
-                <input type="date" class="form-control-sm" id="dataInicioFiltro">
+                <label  class="form-label">Data de início</label> <br />
+                <input type="date" class="form-control-sm" th:field="*{dataFinal}">
             </div>
 
             <input type="submit" value="Buscar" class="btn btn-primary" />

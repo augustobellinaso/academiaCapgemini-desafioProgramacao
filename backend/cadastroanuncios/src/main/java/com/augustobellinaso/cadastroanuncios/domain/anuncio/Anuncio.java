@@ -57,7 +57,7 @@ public class Anuncio implements Serializable {
         int compartilhamentos = 0;
         int novasVisualizacoes = 0;
 
-        for (int i = 1; i <= vezesCompartilhadas(); i++) {
+        for (int i = 1; i <= 4; i++) {
             cliques = qtdeCliques(visualizacoes);
             compartilhamentos = qtdeCompartilhamento(cliques);
             novasVisualizacoes = compartilhamentos * 40;
@@ -84,12 +84,6 @@ public class Anuncio implements Serializable {
     //Quantidade de compartilhamentos a partir da quantidade de cliques
     public int qtdeCompartilhamento(int cliques) {
         return (cliques / 20) * 3;
-    }
-
-    //Retorna um número aleatório com o máximo de vezes que o anúncio foi compartilhado (máximo é 4)
-    public int vezesCompartilhadas() {
-        int compartilhamentos = (int) (Math.random() * 4) + 1;
-        return compartilhamentos;
     }
 
     public int cliquesTotais() {
