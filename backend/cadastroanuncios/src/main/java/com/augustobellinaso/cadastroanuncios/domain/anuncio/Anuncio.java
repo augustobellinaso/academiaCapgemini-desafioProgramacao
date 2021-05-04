@@ -47,4 +47,56 @@ public class Anuncio implements Serializable {
     @Column
     private BigDecimal investimento;
 
+    //Métodos da classe
+    public int qtdeMaximaVisualizacoes() {
+        int visualizacoes = 0;
+        int visualizacoesOriginais = visualizacoesAnuncioOriginal(investimento.intValue());
+        visualizacoes += visualizacoesOriginais;
+
+        int cliques = 0;
+        int compartilhamentos = 0;
+        int novasVisualizacoes = 0;
+
+        for (int i = 1; i <= vezesCompartilhadas(); i++) {
+            cliques = qtdeCliques(visualizacoes);
+            compartilhamentos = qtdeCompartilhamento(cliques);
+            novasVisualizacoes = compartilhamentos * 40;
+            visualizacoes += novasVisualizacoes;
+        }
+        return visualizacoes;
+    }
+
+    //Método para obter o número de visualizações do anúncio original
+    public int visualizacoesAnuncioOriginal(int valorInvestido) {
+        int visualizacoes = 0;
+
+        for (int i = 1; i <= valorInvestido; i++) {
+            visualizacoes += 30;
+        }
+        return visualizacoes;
+    }
+
+    //Quantidade de cliques baseado na quantidade de visualizações
+    public int qtdeCliques(int visualizacoes) {
+        return (visualizacoes / 100) * 12;
+    }
+
+    //Quantidade de compartilhamentos a partir da quantidade de cliques
+    public int qtdeCompartilhamento(int cliques) {
+        return (cliques / 20) * 3;
+    }
+
+    //Retorna um número aleatório com o máximo de vezes que o anúncio foi compartilhado (máximo é 4)
+    public int vezesCompartilhadas() {
+        int compartilhamentos = (int) (Math.random() * 4) + 1;
+        return compartilhamentos;
+    }
+
+    public int cliquesTotais() {
+        return (qtdeMaximaVisualizacoes() / 100) * 12;
+    }
+
+    public int compartilhamentosTotais() {
+        return (cliquesTotais() / 20) * 3;
+    }
 }

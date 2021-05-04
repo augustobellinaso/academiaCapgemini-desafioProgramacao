@@ -48,26 +48,25 @@
         <tr>
             <th scope="col">Anúncio</th>
             <th scope="col">Cliente</th>
-            <th scope="col">Valor Investido</th>
-            <th scope="col">Visualizações</th>
-            <th scope="col">Visualizações</th>
-            <th scope="col">Cliques</th>
-            <th scope="col">Compartilhamentos</th>
+            <th scope="col">Valor Investido por dia</th>
+            <th scope="col">Visualizações por dia</th>
+            <th scope="col">Cliques por dia</th>
+            <th scope="col">Compartilhamentos por dia</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
+        <tr th:each="anuncio : ${anuncios}">
+            <td><span th:text="${anuncio.nomeAnuncio}"></span></td>
+            <td><span th:text="${anuncio.nomeCliente}"></span></td>
+            <td><span th:text="${anuncio.investimento}"></span></td>
+            <td><span th:text="${anuncio.qtdeMaximaVisualizacoes()}"></span></td>
+            <td><span th:text="${anuncio.cliquesTotais()}"></span></td>
+            <td><span th:text="${anuncio.compartilhamentosTotais()}"></span></td>
         </tr>
 
         </tbody>
     </table>
+    <input type="button" class="btn btn-secondary" value="Voltar" th:onclick="'location.href=\'' + @{/index} + '\';'">
 </div>
 
 <footer class="bg-light text-center text-lg-start">
