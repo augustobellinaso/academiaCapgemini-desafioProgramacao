@@ -40,9 +40,7 @@
                 <input type="submit" value="Cadastrar novo anúncio" class="btn btn-primary"/>
             </form>
             <br/>
-            <form method="get" th:action="@{/relatorios}">
-                <input type="submit" value="Relatórios de anúncios" class="btn btn-secondary" >
-            </form>
+            <button type="button" class="btn btn-secondary" th:onclick="'location.href=\'' + @{/relatorios} + '\';'">Relatório de anúncios</button>
 
 
         </div>

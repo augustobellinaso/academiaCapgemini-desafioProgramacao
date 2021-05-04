@@ -24,7 +24,6 @@
 </div>
 <div class="container">
     <form name="formCadastro" method="post" th:action="@{/public/cadastro/save}" th:object="${anuncio}">
-        <fieldset>
 
             <div class="mb-3">
                 <label class="form-label">Nome do anúncio</label>
@@ -68,7 +67,7 @@
 
             <input type="submit" class="btn btn-primary" value="Cadastrar"/>
             <input type="button" class="btn btn-secondary" value="Voltar" th:onclick="'location.href=\'' + @{/index} + '\';'">
-        </fieldset>
+
     </form>
 </div>
 

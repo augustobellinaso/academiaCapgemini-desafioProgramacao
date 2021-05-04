@@ -37,7 +37,7 @@ public class AnuncioController {
             model.addAttribute("msg", "Anúncio cadastrado com sucesso!");
         }
 
-        return "anuncio-cadastro";
+        return "anuncio-salvo";
     }
 
 
