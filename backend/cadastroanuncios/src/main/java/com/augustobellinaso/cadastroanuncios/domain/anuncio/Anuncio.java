@@ -1,6 +1,8 @@
 package com.augustobellinaso.cadastroanuncios.domain.anuncio;
 
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +14,8 @@ import java.time.LocalDate;
 
 @Entity
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Getter
+@Setter
 public class Anuncio implements Serializable {
 
     @Id
