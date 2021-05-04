@@ -17,6 +17,10 @@
 <div class="container py-3">
     <h1>Cadastro de Anúncios</h1>
 </div>
+
+<div id="sucesso" th:if="${msg != null}" class="alert alert-success container" role="alert">
+    <span th:text="${msg}"></span>
+</div>
 <div class="container">
     <form name="formCadastro" method="post" th:action="@{/public/cadastro/save}" th:object="${anuncio}">
         <fieldset>
