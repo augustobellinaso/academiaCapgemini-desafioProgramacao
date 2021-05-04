@@ -24,26 +24,47 @@
 <div class="container">
     <form name="formCadastro" method="post" th:action="@{/public/cadastro/save}" th:object="${anuncio}">
         <fieldset>
+
             <div class="mb-3">
                 <label class="form-label">Nome do anúncio</label>
                 <input type="text" class="form-control" th:field="*{nomeAnuncio}"/>
             </div>
+            <div class="alert alert-danger container" role="alert" th:if="${#fields.hasErrors('nomeAnuncio')}">
+                <span th:errors="*{nomeAnuncio}"></span>
+            </div>
+
             <div class="mb-3">
                 <label class="form-label">Nome do cliente</label>
                 <input type="text" class="form-control" th:field="*{nomeCliente}"/>
             </div>
+            <div class="alert alert-danger container" role="alert" th:if="${#fields.hasErrors('nomeCliente')}">
+                <span th:errors="*{nomeCliente}"></span>
+            </div>
+
             <div class="mb-3">
                 <label class="form-label">Data de início</label>
                 <input type="date" class="form-control" th:field="*{dataInicio}"/>
             </div>
+            <div class="alert alert-danger container" role="alert" th:if="${#fields.hasErrors('dataInicio')}">
+                <span th:errors="*{dataInicio}"></span>
+            </div>
+
             <div class="mb-3">
                 <label class="form-label">Data de término</label>
                 <input type="date" class="form-control" th:field="*{dataFinal}"/>
             </div>
+            <div class="alert alert-danger container" role="alert" th:if="${#fields.hasErrors('dataFinal')}">
+                <span th:errors="*{dataFinal}"></span>
+            </div>
+
             <div class="mb-3">
                 <label class="form-label">Investimento por dia</label>
                 <input type="text" class="form-control" th:field="*{investimento}"/>
             </div>
+            <div class="alert alert-danger container" role="alert" th:if="${#fields.hasErrors('investimento')}">
+                <span th:errors="*{investimento}"></span>
+            </div>
+
             <input type="submit" class="btn btn-primary" value="Cadastrar"/>
         </fieldset>
     </form>
