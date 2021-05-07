@@ -2,7 +2,6 @@ package com.augustobellinaso.cadastroanuncios.controller;
 
 import com.augustobellinaso.cadastroanuncios.application.AnuncioService;
 import com.augustobellinaso.cadastroanuncios.domain.anuncio.Anuncio;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
@@ -23,7 +22,7 @@ public class AnuncioController {
     @Autowired
     private AnuncioService anuncioService;
 
-    @GetMapping(path = "/cadastro/new")
+    @GetMapping(path = "/public/cadastro/new")
     public String newCadastro(Model model) {
         model.addAttribute("anuncio", new Anuncio());
         return "anuncio-cadastro";
@@ -31,16 +30,16 @@ public class AnuncioController {
 
     @PostMapping(path = "/cadastro/save")
     public String cadastrarAnuncio(@ModelAttribute("anuncio") @Valid Anuncio anuncio,
-                                   Errors error,
+                                   Errors errors,
                                    Model model) {
 
-        if (!error.hasErrors()) {
+        if (!errors.hasErrors()) {
             anuncioService.saveAnuncio(anuncio);
             model.addAttribute("msg", "Anúncio cadastrado com sucesso!");
+            return "anuncio-salvo";
         }
 
-        return "anuncio-salvo";
+        return "anuncio-cadastro";
     }
-
 
 }
